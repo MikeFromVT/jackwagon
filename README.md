@@ -9,7 +9,7 @@ These files have been tested and used to generate a live ELK deployment on MS Az
 They cna be used to either recreate the entire deployment pictured above.
 Aleternatively, select portions of the Ansible Playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-##insert ansiible file here##
+
 This document contains the following details:
 - Description of the Topology
 - Access Policies
