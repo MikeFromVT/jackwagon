@@ -80,6 +80,38 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running "docker ps" after successfully configuring the ELK machine.
 
+![image](https://user-images.githubusercontent.com/48810057/112733565-af66dc00-8f0e-11eb-8233-fb61aa638f89.png)
+
+### Target Machines and Beats
+
+This ELK server is configured to monitor the following machines: Web-1, Web-2, and Web-3.
+
+We have installed the following beats on these machines:  FileBeat is installed on ELK-RIb, Web-1, -2, and  -3.
+
+![scrnsht filebeat install via ansible success](https://user-images.githubusercontent.com/48810057/112733652-37e57c80-8f0f-11eb-8ed0-3af12b13e3b9.png)
+
+![scrnsht filebeat data check after install](https://user-images.githubusercontent.com/48810057/112733661-42a01180-8f0f-11eb-9ab4-727f41e96b84.png)
+
+This FileBeat install allows us to collect the following information from each machine: log events
+Filebeat used as harvester for each file to monitor any change that occurs and if one does that is logged as an event and reported to Kibana.
+
+### Using the playbook
+
+In order to use the playbook, you will need to have and Ansible control node already configured.  Assuming you have such a control node provisioned:
+
+SSH into the control node and follow the steps below:
+- copy the cyberxsecurity/dvwa module into your yaml playbook file and update the filebeat-config file to include 10.1.0.4 (ELK-Rib)
+- update hosts file to make sure all IPs are present for [web servers] and for [elk]
+- run ansible-playbook install-elk.yml for ELK and ansible-playbook filebeat.yml for FileBeat
+- run the playbook and navigate to the Kibana page and ensure there is data coming in from the logging
+
+The playbook file is playbook.yml.
+Hosts file must be updated to make Ansible run the playbook on a specific machine.  You specify by IP.
+I specify which machine to install the ELK seever on by also using the hosts file but under [elk] header.
+I go to http://40.119.49.25:5601/app/kibana to open Kibana and check to see if data is incoming.
+
+![scrsht kibana connect after fw rule addition](https://user-images.githubusercontent.com/48810057/112734221-6022aa80-8f12-11eb-82e6-6d04bf8d47ba.png)
+
 
 
 
